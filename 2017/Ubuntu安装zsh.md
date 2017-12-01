@@ -23,9 +23,13 @@ $ apt-get install curl
 $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 ```
 
-在根目录下面打开~/.zshrc配置文件，最好安装下vim
+在根目录下面打开~/.zshrc配置文件，最好安装下vim，还没装的用vi也可以
 ``` bash
 $ vim ~/.zshrc
+
+#or
+
+$ vi ~/.zshrc
 ```
 
 更改ZSH主题配置

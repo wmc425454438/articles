@@ -2,8 +2,8 @@
 
 ### 坑位1
 
-这个脚手架的正真的`webpack`配置文件并不是项目下面的`webpack.config.js`，我今天在里面尝试了CSS Modules的写法，但是写来写去不成功。不能正常使用CSS Modules的语法
-。
+这个脚手架不能正常使用CSS Modules，我今天在里面尝试了CSS Modules的写法，但是写来写去不成功。
+
 
 网上有人也发现了这个问题，使用
 ``` css

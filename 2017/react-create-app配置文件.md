@@ -1,6 +1,6 @@
-# react-create-app
+# react-create-app配置文件
 
-### 坑位1
+### eject
 
 这个脚手架不能正常使用CSS Modules，我今天在里面尝试了CSS Modules的写法，但是写来写去不成功。
 
@@ -16,8 +16,16 @@
 
 后来发现react脚手架有个eject需要开启，正真的配置文件在开启后会有显示，分别是`webpack.config.dev.js`和`webpack.config.pro.js`。开发版本和生产版本的两个配置文件。
 
-配置这两个文件就可以了。
-`webpack.config.dev.js`
+在项目目录下输入：
+``` bash
+npm run eject
+```
+会提示你要不要开启（因为一旦开启了就不能关闭了），确定就可以了。
+
+再配置这两个文件就可以了。
+
+
+#### 配置`webpack.config.dev.js`
 ``` jsx
 // before
 {
@@ -37,7 +45,8 @@
 },
 ```
 
-`webpack.config.pro.js`
+
+#### 配置`webpack.config.pro.js`
 ``` jsx
 // before
 {

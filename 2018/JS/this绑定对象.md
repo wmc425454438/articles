@@ -1,5 +1,44 @@
 # this绑定对象
 
+学习 this 的第一步是明白 this 既不指向函数自身也不指向函数的词法作用域，你也许被这样的解释误导过，但其实它们都是错误的。
+
+this 实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。
+
+``` js
+function foo() {
+	var a = 2;
+	this.bar();
+}
+function bar() {
+	console.log( this.a );
+}
+foo(); // ReferenceError: a is not defined
+```
+这里的` this `其实指向的是全局对象` a `，因为` bar() `是全局环境下运行的函数。所以会提示RHS。
+
+
+调用位置和调用栈可以帮我们清楚的分析` this `的调用位置。
+``` js
+function baz() {
+// 当前调用栈是：baz
+// 因此，当前调用位置是全局作用域
+console.log( "baz" );
+bar(); // <-- bar 的调用位置
+}
+function bar() {
+// 当前调用栈是 baz -> bar
+// 因此，当前调用位置在 baz 中
+console.log( "bar" );
+foo(); // <-- foo 的调用位置
+}
+function foo() {
+// 当前调用栈是 baz -> bar -> foo
+// 因此，当前调用位置在 bar 中
+console.log( "foo" );
+}
+baz(); // <-- baz 的调用位置
+```
+
 如果要判断一个运行中函数的` this `绑定，就需要找到这个函数的直接调用位置。找到之后就可以顺序应用下面这四条规则来判断` this `的绑定对象。
 
 1. 由` new `调用？绑定到新创建的对象。

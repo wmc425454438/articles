@@ -14,7 +14,7 @@ function bar() {
 }
 foo(); // ReferenceError: a is not defined
 ```
-这里的` this `其实指向的是全局对象` a `，因为` bar() `是全局环境下运行的函数。所以会提示RHS。
+这里的` this `其实指向的是全局对象` a `，因为` bar() `是全局环境下运行的函数。执行的是RHS。
 
 
 调用位置和调用栈可以帮我们清楚的分析` this `的调用位置。
@@ -37,6 +37,82 @@ function foo() {
 console.log( "foo" );
 }
 baz(); // <-- baz 的调用位置
+```
+- 隐式绑定
+``` js
+function foo() {
+console.log( this.a );
+}
+var obj2 = {
+a: 42,
+foo: foo
+};
+var obj1 = {
+a: 2,
+obj2: obj2
+};
+obj1.obj2.foo(); // 42
+```
+只会绑定最后的对象。
+- 显式绑定
+` call() `和` apply() `方法
+``` js
+function foo() {
+console.log( this.a );
+}
+var obj = {
+a:2
+};
+foo.call( obj ); // 2
+
+// 硬绑定
+function foo() {
+console.log( this.a );
+}
+var obj = {
+a:2
+};
+var bar = function() {
+foo.call( obj );
+};
+bar(); // 2
+setTimeout( bar, 100 ); // 2
+// 硬绑定的 bar 不可能再修改它的 this
+bar.call( window ); // 2
+```
+
+由于硬绑定是一种非常常用的模式，所以在 ES5 中提供了内置的方法` Function.prototype.bind `，它的用法如下：
+``` js
+function foo(something) {
+console.log( this.a, something );
+return this.a + something;
+}
+var obj = {
+a:2
+};
+var bar = foo.bind( obj );
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+```
+
+- 软绑定
+``` js
+if (!Function.prototype.softBind) {
+	Function.prototype.softBind = function(obj) {
+		var fn = this;
+// 捕获所有 curried 参数
+var curried = [].slice.call( arguments, 1 );
+var bound = function() {
+	return fn.apply(
+		(!this || this === (window || global)) ?
+		obj : this
+		curried.concat.apply( curried, arguments )
+		);
+};
+bound.prototype = Object.create( fn.prototype );
+return bound;
+};
+}
 ```
 
 如果要判断一个运行中函数的` this `绑定，就需要找到这个函数的直接调用位置。找到之后就可以顺序应用下面这四条规则来判断` this `的绑定对象。

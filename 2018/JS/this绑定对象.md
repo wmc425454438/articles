@@ -95,6 +95,20 @@ var b = bar( 3 ); // 2 3
 console.log( b ); // 5
 ```
 
+- 间接绑定
+``` js
+// 间接绑定容易在赋值时发生，会应用默认绑定
+function foo() {
+  console.log( this.a );
+}
+var a = 2;
+var o = { a: 3, foo: foo };
+var p = { a: 4 };
+o.foo(); // 3
+(p.foo = o.foo)(); // 2
+```
+如果函数体处于严格模式，` this `会被绑定到` undefined `，否则` this `会被绑定到全局对象。
+
 - 软绑定
 ``` js
 if (!Function.prototype.softBind) {
@@ -114,7 +128,24 @@ return bound;
 };
 }
 ```
+-----------------
+箭头函数最常用于回调函数中，例如事件处理器或者定时器：
 
+``` js
+function foo() {
+  setTimeout(() => {
+    // 这里的 this 在此法上继承自 foo()
+      console.log( this.a );
+    },100);
+}
+var obj = {
+  a:2
+};
+foo.call( obj ); // 2
+```
+
+箭头函数可以像 bind(..) 一样确保函数的 this 被绑定到指定对象，此外，其重要性还体现在它用更常见的词法作用域取代了传统的 this 机制。
+---------------
 如果要判断一个运行中函数的` this `绑定，就需要找到这个函数的直接调用位置。找到之后就可以顺序应用下面这四条规则来判断` this `的绑定对象。
 
 1. 由` new `调用？绑定到新创建的对象。

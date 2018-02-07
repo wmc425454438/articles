@@ -31,3 +31,68 @@ border-width: 15px 25px 0px 0px;
 1. 将` div `设置为宽高都为0的元素，用border填充div。
 2. 设置` border-width `来实现三角形的形状以及宽高。
 3. 设置` border-color `来实现想要的颜色。
+
+
+想着还是上代码直观一些：
+``` html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>border</title>
+    <style type="text/css">
+    	.border1{
+    		width: 0;
+    		height: 0;
+    		border-width: 20px;
+    		border-style: solid;
+    		border-color: #aaa #bbb #ccc #ddd;
+    	}
+    	.border2{
+    		width: 0;
+    		height: 0;
+    		border-width: 40px 0px 0px 40px;
+    		border-style: solid;
+    		border-color: #aaa #bbb #ccc #ddd;
+    	}
+    	.border3{
+    		width: 0;
+    		height: 0;
+    		border-width: 40px 40px 0px 0px;
+    		border-style: solid;
+    		border-color: #aaa #bbb #ccc #ddd;
+    	}
+    	.border4{
+    		width: 0;
+    		height: 0;
+    		border-width: 0px 40px 40px 0px;
+    		border-style: solid;
+    		border-color: #aaa #bbb #ccc #ddd;
+    	}
+    	.border5{
+    		width: 0;
+    		height: 0;
+    		border-width: 0px 0px 40px 40px;
+    		border-style: solid;
+    		border-color: #aaa #bbb #ccc #ddd;
+    	}
+    	.border6{
+    		width: 0;
+    		height: 0;
+    		border-width: 15px 10px 0px 0px;
+    		border-style: solid;
+    		border-color: #000 #c33a37 #ccc #ddd;
+    	}
+    </style>
+</head>
+<body>
+
+<div class="border1 "></div>
+<div class="border2 "></div>
+<div class="border3 "></div>
+<div class="border4 "></div>
+<div class="border5 "></div>
+<div class="border6 "></div>
+</body>
+</html>
+```

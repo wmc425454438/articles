@@ -62,6 +62,8 @@ onReady: function(e){
 想要调用`onReady`中的`this.setData`方法，但是会报错在`success callback中没有这样的方法`，这是因为回调函数改变了this的指向。
 解决方法是保存`onReady`中的`this`指向。
 
+
+我们打印出当前this的信息，发现this指向的是`reverseGeocoder`中的一些方法，并没有`setData`这个方法。
 ``` js
 onReady: function(e){
     // 利用变量保存this

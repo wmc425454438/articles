@@ -99,3 +99,14 @@ onReady: function(e){
   }
 
 ```
+
+使用ES6中推荐的箭头函数可以直接使用this达到这样的效果
+``` js
+wx.request({
+    url,
+    data,
+    success: (res) => {
+        this.setData(...res.data.data);
+    }
+});
+```

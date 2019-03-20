@@ -31,11 +31,11 @@ SPA单页应用，通过router来控制页面的转换。每个页面其实就�
 IE不兼容ES6的简写语法，只能将其转换为ES5语法。进场会报错`SCRIPT:1003 缺少:`。
 ``` js
 var vue = new Vue({
-	data(){
+  data(){
     return {
       params,
-      }
     }
+  }
 })
 ```
 

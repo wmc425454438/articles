@@ -76,27 +76,43 @@ console.log(a === b);
 
 ### lazy singleton
 
-``` js
-// lazy singleton in common use
-// create the instance only when you use it
-// disparate create function and manage singleton function
+``` html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // lazy singleton in common use
+      // create the instance only when you use it
+      // disparate create function and manage singleton function
+      var getSingle = function(fn) {
+        var result;
+        return function() {
+          return result || (result = fn.apply(this, arguments));
+        };
+      };
 
-var getSingle = function(fn) {
-    var result;
-    return function() {
-        return result || ( result = fn .apply(this, arguments) );
-    }
-}
+      var CreateLoginLayer = function() {
+        var div = document.createElement("div");
+        div.innerHTML = "loginLayer";
+        div.style.display = "none";
+        document.body.appendChild(div);
+        return div;
+      };
 
-var Singleton = function() {
-    var name = 'Joe';
-    return name;
-}
+      var createSingleLoginLayer = getSingle(CreateLoginLayer);
 
-var createSingle = getSingle(Singleton);
+      var a = CreateLoginLayer();
+      var b = CreateLoginLayer();
+      var e = createSingleLoginLayer();
+      var f = createSingleLoginLayer();
 
-var e = createSingle();
-var f = createSingle();
-
-console.log( e === f );
+      console.log(a === b);
+      console.log(e === f);
+    </script>
+  </body>
+</html>
 ```

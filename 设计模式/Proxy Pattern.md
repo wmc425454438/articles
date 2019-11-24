@@ -80,6 +80,7 @@ var Friend = {
 Michael.sendFlower(Friend)
 
 // calculate proxy example
+// calculate cache put in proxy function
 
 /********* mult **********/
 var mult = function() {

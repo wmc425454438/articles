@@ -79,3 +79,4 @@ compare( iterator1 , iterator3 );
 ```
 
 The internal iterator is equal to the external iterator, we use them in right situation.
+Now, it already put in Javascript. We can use it without build it by yourself.

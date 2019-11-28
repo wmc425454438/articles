@@ -27,7 +27,7 @@ Coffee.prototype.init = function() {
 var coffee = new Coffee();
 coffee.init();
 
-// // Tea
+// Tea
 var Tea = function() {};
 
 Tea.prototype.boilWater = function() {

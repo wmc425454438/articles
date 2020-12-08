@@ -1,0 +1,33 @@
+# Git实践
+
+## 起因
+
+之前一直用的svn来进行版本管理，所以git的提交流程以及方式都是直接在`master`上进行提交。
+
+现在到了新的公司，都是用`GitLab`来进行提交代码以及版本管理。
+
+自然需要`git`相关的知识以及运用，在网上找了大部分的资料，总结一下具体的分支创建方式以及常用的规范。
+
+## 分支
+
+主要分为五种分支：
+
+- master 主分支，只用作发布
+- develop 开发分支，和master代码相同，用于开发合并代码和测试
+- feature 特性分支，用于开发人员创建自己的功能分支。从develop分支创建，开发完成自测之后可以提交到develop分支，删除该分支。
+- bugfifx bug修复分支，用于修复不紧急的bug。从develop分支创建，修复完成后合并到develop分支，删除该分支。
+- release 从develop分支创建，用于测试人员进行测试。如果发现bug立即在release分支修复，修复完成后，合并到develop分支。
+- hotfix 用于修复线上紧急bug，从master分支创建。修复完成后合并到master和develop分支。
+
+## 命令（参考）
+
+### 创建分支
+``` bash
+git branch develop
+```
+
+### 切换分支
+```
+git checkout develop
+```
+***切换分之后，再执行分支创建，则是基于该分支创建分支***

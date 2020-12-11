@@ -23,13 +23,84 @@
 
 ## 命令（参考）
 
-### 创建分支
+创建分支
 ``` bash
 git branch develop
 ```
 
-### 切换分支
-```
+切换分支
+
+``` bash
+git switch develop
+// 或者
 git checkout develop
 ```
+
 ***切换分之后，再执行分支创建，则是基于该分支创建分支***
+
+创建并切换分支
+
+上面的也可以一句话完成
+
+``` bash
+git switch -c develop
+// 或者
+git checkout -b develop
+```
+
+master合并feature上的新特新，删除特性分支
+```
+git switch master
+git merge feature
+git branch -d feature
+```
+
+一般的merge在删除分支后会丢掉分支信息，这就是所说的merge的fast forward模式。
+
+如果想留住合并时的信息，就不能用此模式，我们可以用--no-ff，这样会在merge时生成一个新的commit。
+```
+git merge --no-ff -m "merge info" develop
+```
+
+合并分支图查看
+```
+git log --graph
+```
+
+如果在开发过程中需要修复一个紧急bug，但是现在又不能直接提交代码。
+
+我们可以用stash方式来暂存当前的代码，等待修复bug后再用stash pop的方式，恢复当前开发现场。
+
+```
+git stash
+git switch -b bug_fix001
+git add readme.txt
+git commit -m "bugfix001"
+// 生成该次commit的代号 
+// [bug_fix001 4c805e2] bugfix001
+git switch master
+git merge --no-ff -m "bugfix001" bug_fix001
+git brach -d bug_fix001
+git swtich develop
+git stash list
+git stash pop
+```
+
+可以发现我们在master修复该bug后，develop也有相同的bug。
+
+此时我们只需要merge这个刚修复的commit就可以了，因为develop有可能有新的提交。
+
+这里用到了cherry-pick
+
+```
+git swtich develop
+git cherry-pick 4c805e2
+```
+
+这样就可以把修复的bug提交到develop上了
+
+普通的pull如果有文件更改，会多一次commit的记录。
+rebase可以让commit的记录清楚。
+```
+git pull --rebase
+```

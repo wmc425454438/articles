@@ -17,8 +17,11 @@
 一般在扩展里面直接搜索`sonarlint`直接安装。或者官网下载[sonarlint插件](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode)。通过安装插件包的方式安装。
 
 这是下载插件的位置
+
 ![image](%E4%B8%8B%E8%BD%BD%E6%89%A9%E5%B1%95%E4%BD%8D%E7%BD%AE.png)
+
 这是安装插件的方式
+
 ![image1](vscode%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85.png)
 
 ## 获取Generate Token

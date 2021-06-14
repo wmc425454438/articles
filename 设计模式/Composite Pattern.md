@@ -7,28 +7,28 @@
 下面先给出大致的代码：
 
 ``` js
-var nameField = {
+const nameField = {
     name: 'nameField',
     validata: function() {
         console.log('validata ', this.name, ' result');
     }
 }
 
-var idCard = {
+const idCard = {
     name: 'idCard',
     validata: function() {
         console.log('validata ', this.name, ' result');
     }
 }
 
-var email = {
+const email = {
     name: 'email',
     validata: function() {
         console.log('validata ', this.name, ' result');
     }
 }
 
-var phone = {
+const phone = {
     name: 'phone',
     validata: function() {
         console.log('validata ', this.name, ' result');
@@ -36,7 +36,7 @@ var phone = {
 }
 ```
 
-一般情况下，我们会用与符号判断所有的验证是否通过
+一般情况下，我们会用与符号判断所有的验证是否通过。
 
 ``` js
 // normal

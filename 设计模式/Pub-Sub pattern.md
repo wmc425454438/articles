@@ -58,6 +58,6 @@ var Event = (function() {
 Event.listen( 'squareMeter88', function(){ // subcribe
     console.log(arguments); // output：'price=2000000'
    });
-Event.trigger( 'squareMeter88', 2000000, 300000 ); // publish
+Event.trigger( 'squareMeter88', 2000000 ); // publish
 
 ```

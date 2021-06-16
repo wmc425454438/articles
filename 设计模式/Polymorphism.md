@@ -2,7 +2,7 @@
 
 :fire:Polymorphism is one of the tenets of Object Oriented Programming (OOP). It is the practice of designing objects to share behaviors and to be able to override shared behaviors with specific ones. Polymorphism takes advantage of inheritance in order to make this happen.
 
-### normal function implementation
+## normal function implementation
 
 ``` js
 var googleMap = {

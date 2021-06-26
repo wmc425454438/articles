@@ -3,6 +3,7 @@
 ## 1.简介
 
 Class 可以通过extends关键字实现继承，这比 ES5 的通过修改原型链实现继承，要清晰和方便很多。
+
 ``` js
 class Point {
 }
@@ -45,6 +46,7 @@ let cp = new ColorPoint(); // ReferenceError
 上面代码中，ColorPoint继承了父类Point，但是它的构造函数没有调用super方法，导致新建实例时报错。
 
 最后，父类的静态方法，也会被子类继承。
+
 ``` js
 class A {
   static hello() {
@@ -60,8 +62,8 @@ B.hello()  // hello world
 
 上面代码中，hello()是A类的静态方法，B继承A，也继承了A的静态方法。
 
-
 ## 2.Object.getPrototypeOf() 
+
 `Object.getPrototypeOf`方法可以用来从子类上获取父类。
 
 ``` js
@@ -70,18 +72,3 @@ Object.getPrototypeOf(ColorPoint) === Point
 ```
 
 **因此，可以使用这个方法判断，一个类是否继承了另一个类。**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

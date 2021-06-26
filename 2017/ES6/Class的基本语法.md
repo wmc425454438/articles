@@ -3,6 +3,7 @@
 ## 1. 简介
 
 JavaScript 语言中，生成实例对象的传统方法是通过构造函数。下面是一个例子。
+
 ``` js
 function Point(x, y) {
   this.x = x;
@@ -32,10 +33,12 @@ class Point {
   }
 }
 ```
+
 上面代码定义了一个“类”，可以看到里面有一个constructor方法，这就是构造方法，而this关键字则代表实例对象。\
 也就是说，ES5 的构造函数Point，对应 ES6 的Point类的构造方法。
 
 ES6 的类，完全可以看作构造函数的另一种写法。
+
 ``` js
 class Point {
   // ...
@@ -44,9 +47,11 @@ class Point {
 typeof Point // "function"
 Point === Point.prototype.constructor // true
 ```
+
 上面代码表明，类的数据类型就是函数，类本身就指向构造函数。
 
 使用的时候，也是直接对类使用new命令，跟构造函数的用法完全一致。
+
 ``` js
 class Bar {
   doStuff() {
@@ -92,9 +97,11 @@ let b = new B();
 
 b.constructor === B.prototype.constructor // true
 ```
+
 上面代码中，b是B类的实例，它的constructor方法就是B类原型的constructor方法。
 
 由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。Object.assign方法可以很方便地一次向类添加多个方法。
+
 ``` JS
 class Point {
   constructor(){
@@ -107,11 +114,15 @@ Object.assign(Point.prototype, {
   toValue(){}
 });
 ```
+
 prototype对象的constructor属性，直接指向“类”的本身，这与 ES5 的行为是一致的。
+
 ``` js
 Point.prototype.constructor === Point // true
 ```
+
 另外，类的内部所有定义的方法，都是不可枚举的（non-enumerable）。
+
 ``` js
 class Point {
   constructor(x, y) {
@@ -128,9 +139,3 @@ Object.keys(Point.prototype)
 Object.getOwnPropertyNames(Point.prototype)
 // ["constructor","toString"]
 ```
-
-
-
-
-
-

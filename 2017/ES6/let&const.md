@@ -21,6 +21,7 @@
 ### for
 
 `let`还很好的解决了for循环之前出现变量泄露的问题
+
 ``` js
 //before
 for(var i = 0;i < 5; i++){
@@ -55,10 +56,12 @@ for (let i = 0; i < 3; i++) {
 ## `const`定义常量
 
 `const`声明一个只读的常量。一旦声明，值就不能改变。
+
 ``` js
 const PI = 3.14;
 PI = 3; // Assignment to constant variable.
 ```
+
 和`let`一样都是只在声明的块级作用域有效。
 
 ``` js
@@ -70,7 +73,9 @@ console.log(a);// RefrenceError
 ```
 
 ## ES6 声明变量的方法
+
 一共有6种：
+
 1. let
 2. const
 3. var

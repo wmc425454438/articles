@@ -18,15 +18,13 @@
       ></textarea>
     </div>
     <script>
-      document.addEventListener("readystatechange", (event) => {
-        if (
-          document.readyState == "interactive" ||
-          document.readyState == "complete"
-        ) {
-          document.removeEventListener("readystatechange", arguments.callee);
-          console.log("Content loaded");
-        }
-      });
+      window.addEventListener("load", (event) => {
+        let div = document.getElementById("myDiv");
+        div.innerHTML = "Current orientation is " + window.orientation;
+        window.addEventListener("orientationchange", (event) => {
+          div.innerHTML = "Current orientation is " + window.orientation;
+        });
+      }); 
     </script>
   </body>
 </html>

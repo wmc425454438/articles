@@ -1,30 +1,62 @@
+<style>
+  * {
+    margin: 0 auto;
+    padding: 0;
+  }
+</style>
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>ContextMenu Event Example</title>
   </head>
   <body>
-    <div class="controls">
-      <button id="reload" type="button">Reload</button>
-    </div>
-
-    <div class="event-log">
-      <label>Event log:</label>
-      <textarea
-        readonly
-        class="event-log-contents"
-        rows="8"
-        cols="30"
-      ></textarea>
-    </div>
+    <canvas
+      id="canvas"
+      width="600"
+      height="600"
+      style="border: solid black 1px"
+    >
+      Your browser does not support canvas element.
+    </canvas>
+    <br />
+    Log:
+    <pre id="log" style="border: 1px solid #ccc"></pre>
+    <div></div>
     <script>
-      window.addEventListener("load", (event) => {
-        let div = document.getElementById("myDiv");
-        div.innerHTML = "Current orientation is " + window.orientation;
-        window.addEventListener("orientationchange", (event) => {
-          div.innerHTML = "Current orientation is " + window.orientation;
-        });
-      }); 
+      function startup() {
+        var el = document.getElementById("canvas");
+        el.addEventListener("touchstart", handleStart, false);
+        el.addEventListener("touchend", handleEnd, false);
+        el.addEventListener("touchcancel", handleCancel, false);
+        el.addEventListener("touchmove", handleMove, false);
+      }
+
+      document.addEventListener("DOMContentLoaded", startup);
+
+      function handleStart(evt) {
+        evt.preventDefault();
+        const { identifier, pageX, pageY } = evt.changedTouches[0];
+        console.log('handleStart', { identifier, pageX, pageY });
+      }
+
+      function handleEnd(evt) {
+        evt.preventDefault();
+        const { identifier, pageX, pageY } = evt.changedTouches[0];
+        console.log('handleEnd', { identifier, pageX, pageY });
+      }
+
+      function handleCancel(evt) {
+        evt.preventDefault();
+        const { identifier, pageX, pageY } = evt.changedTouches[0];
+        console.log('handleCancel', { identifier, pageX, pageY });
+      }
+
+      function handleMove(evt) {
+        evt.preventDefault();
+        const { identifier, pageX, pageY } = evt.changedTouches[0];
+        console.log('handleMove', { identifier, pageX, pageY });
+      }
     </script>
   </body>
 </html>
